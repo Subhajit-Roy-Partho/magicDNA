@@ -1063,8 +1063,8 @@ classdef hyperbundle <handle
 %                         skipPattern1=[];
 %                         skipPattern2=[];
 %                     else
-%                         skipPattern1=10:60:MaxBase;   % skip mod2 =0
-%                         skipPattern2=40:60:MaxBase;
+%                         skipPattern1=10:50:MaxBase;   % skip mod2 =0
+%                         skipPattern2=40:50:MaxBase;
 %                     end
                     
                     
@@ -3245,8 +3245,8 @@ classdef hyperbundle <handle
                 SaveGHelix{Bundlei}= QQWithPM10Bases;
             end
             MaxBase=max(scafR(:,3));
-            skipPattern1=10:60:MaxBase;   % skip mod2 =0   %test 3/2
-            skipPattern2=40:60:MaxBase;
+            skipPattern1=10:50:MaxBase;   % skip mod2 =0   %test 3/2
+            skipPattern2=40:50:MaxBase;
             XYZforBundles=cell(max(scafR(:,1)),1) ;
             OriNodePosition ; scafR  ;
             
@@ -4811,7 +4811,7 @@ classdef hyperbundle <handle
 % 
 %                     prompt = {' \fontsize{12} Enter the clearance that staple Xovers are ignored from ends:  (Min=2)'};
 %                     dlgtitle = 'Input';
-%                     dims = [1 60];
+%                     dims = [1 50];
 %                     definput = {num2str(8)};
 %                     answer = inputdlg(prompt,dlgtitle,dims,definput,opts) ;
 %                     QQ=  round(str2double(answer{1} ) ) ;
@@ -8718,11 +8718,11 @@ classdef hyperbundle <handle
             
             StapleCell;
             NewStapleCell =cell(1000,1) ; iC=1;
-%             Bound=[60,90];  mB =75;
+%             Bound=[50,90];  mB =75;
             
             for k=1: length(StapleCell)
-                Bound=[35,60];  mB =50;
-%                  Bound=[60,90];  mB =75;
+                Bound=[35,50];  mB =50;
+%                  Bound=[50,90];  mB =75;
                 BaseRout = setdiff( interpolateBase( StapleCell{k} ) , obj.skipBase ,'rows','stable') ;
                 %                 [WW,AlwaysNotCut]=intersect( BaseRout, StapleCell{k},'rows' ) ;
                 [WW2,AlwaysNotCut]=intersect( BaseRout, [StapleCell{k}; obj.scafC5All ],'rows' ) ;
@@ -8764,7 +8764,7 @@ classdef hyperbundle <handle
                         end
                         nw=nw+1 ;
                         if nw==1000*3
-                            Bound=[25,60];   mB=35;
+                            Bound=[25,50];   mB=35;
                             fprintf('Cutting loops up to half. Loose Criterion. \n')
                             %                             StapleCell{k}
                         end
@@ -8804,7 +8804,7 @@ classdef hyperbundle <handle
             newcell=cell(300,1);  NewCell_count=1;
             for iStap=1:    size(Res.IniSegLength,1)
                 %                 iStap
-                if Res.InitialLength(iStap)< 60  || length( Res.IniSegLength{iStap})==2     %if too short, remain old staples
+                if Res.InitialLength(iStap)< 50  || length( Res.IniSegLength{iStap})==2     %if too short, remain old staples
                     newcell(NewCell_count)=obj.StapList2(iStap);
                     NewCell_count=NewCell_count+1;
                     continue
@@ -9786,7 +9786,7 @@ classdef hyperbundle <handle
             Lengths(k)=CC;
         end
         function  [RegularInterval,LongWrongInterval]=SPbreakfindleng2Interval(obj,Lengths,Interval,Ex,relax,LongInterval,LongGInfo,Bound)
-            %              Bound=[30,60];
+            %              Bound=[30,50];
             OldInt=zeros(Interval.N+length(LongInterval),2);
             OldInt(1:Interval.N,:)=[Interval.L' Interval.SP'];
             OldInt(Interval.N+1:end,:)=[LongGInfo(LongInterval,2:3)];
